@@ -1,7 +1,25 @@
-{% extends 'base.html' %} {% block content %} {{block.super}}
-<h2>Sign up</h2>
-<form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Sign up</button>
-</form>
+{% extends 'base.html' %} {% load i18n widget_tweaks %} {% block content %} {{block.super}}
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    <h2>Sign up</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {% render_field form.username class="form-control" placeholder='username' %}
+            <p style="color: red">{{form.username.errors}}</p>
+        </div>
+        <div class="form-group">
+            {% render_field form.password1 class="form-control" placeholder='password' %}
+            <p style="color: red">{{form.password1.errors}}</p>
+        </div>
+        <div class="form-group">
+            {% render_field form.password2 class="form-control" placeholder='confirm password' %}
+            <p style="color: red">{{form.password2.errors}}</p>
+        </div>
+
+        <button type="submit">Sign up</button>
+    </form>
+</div>
+<div class="col-md-4"></div>
 {% endblock %}
