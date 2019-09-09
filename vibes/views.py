@@ -55,7 +55,7 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            subject = "Activate Your Photopedia Account"
+            subject = "Activate Your IP vibes Account"
             current_site = Site.objects.get_current()
             print(current_site.domain)
             # current_site = get_current_site(request)
