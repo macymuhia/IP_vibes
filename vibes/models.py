@@ -38,10 +38,10 @@ class Project(models.Model):
     image = models.ImageField(upload_to='projects/')
     description = models.CharField(max_length=255)
     link = models.URLField(default='')
-    project_owner = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING)
+    project_owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     design_rating = models.DecimalField(
-        max_digits=3, decimal_places=1, blank=True)
+        max_digits=3, decimal_places=1, default=0, blank=True)
     usability_rating = models.DecimalField(
-        max_digits=3, decimal_places=1, blank=True)
+        max_digits=3, decimal_places=1, default=0, blank=True)
     content_rating = models.DecimalField(
-        max_digits=3, decimal_places=1, blank=True)
+        max_digits=3, decimal_places=1, default=0, blank=True)

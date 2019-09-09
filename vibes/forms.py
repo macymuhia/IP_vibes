@@ -23,5 +23,7 @@ class UserForm(forms.ModelForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
+        exclude = ['project_owner', 'design_rating',
+                   'usability_rating', 'content_rating']
 
-        fields = ('title', 'image', 'description', 'link')
+        # fields = ('title', 'image', 'description', 'link')

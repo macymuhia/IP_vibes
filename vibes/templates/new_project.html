@@ -4,10 +4,14 @@
 <div class="card text-center">
     <div class="card-img-overlay">
         <h1 class="card-title text-center">New Project</h1>
-        <form method="POST">
-            {% csrf_token %} {% bootstrap_form form %}
-            <button class="btn" type="submit">Add Project</button>
-        </form>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="{% url 'new_project' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {% bootstrap_form form %}
+                <button class=" btn btn-primary " type="submit ">Add Project</button>
+            </form>
+        </div>
+        <div class="col-md-4 "></div>
     </div>
 </div>
 {% endblock %}

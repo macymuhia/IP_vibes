@@ -13,18 +13,30 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 from .forms import SignUpForm, UserForm, ProjectForm
-from .models import UserProfile
+from .models import UserProfile, Project
 from .tokens import account_activation_token
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'home.html')
+    projects = Project.objects.all()
+    return render(request, 'home.html', {'projects': projects})
 
 
+@login_required(login_url='login/')
 def new_project(request):
-    form = ProjectForm(request.POST)
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.project_owner = current_user
+            project.save()
+            return redirect('home')
+    else:
+        form = ProjectForm()
     return render(request, 'new_project.html', {'form': form})
 
 
@@ -92,7 +104,7 @@ def activate(request, uidb64, token):
         return render(request, 'email/account_activation_invalid.html')
 
 
-@login_required()
+@login_required(login_url='login/')
 def profile(request):
     # TODO: 1. get current logged in user
     # TODO: 2. fetch user profile data
@@ -105,7 +117,7 @@ def profile(request):
     return render(request, 'registration/profile.html', {'user_data': user_data, 'user_profile': user_profile})
 
 
-@login_required()  # only logged in users should access this
+@login_required(login_url='login/')  # only logged in users should access this
 def edit_profile(request):
 
     current_user = request.user
