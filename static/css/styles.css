@@ -10,10 +10,14 @@ body {
     width: 350px;
 }
 
-.navbar,
-.btn-primary {
+.navbar {
     background-color: #48c5b6;
     border-radius: 0px;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #48c5b6;
     border: none;
 }
 

@@ -3,17 +3,21 @@
 {% block content %} {{block.super}}
 <div class="card text-center">
     <div class="card-img-overlay">
-        <h1 class="card-title text-center">User profile</h1>
-        <p class="card-text">Profile form coming soon...</p>
-        <p>{{user_data.email}}</p>
-        {% if user_profile.photo %}
-        <img src=" {{ user_profile.photo.url }} " alt=""> {% endif %}
-        <p>{{user_profile.phone}}</p>
-        <p>{{user_profile.bio}}</p>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h1 class="card-title text-center">User profile</h1>
+                {% if user_profile.photo %}
+                <img class="img-responsive img-circle" src=" {{ user_profile.photo.url }} " alt=""> {% endif %}
+                <p class="card-text">{{user_data.username}}</p>
+                <p>{{user_data.email}}</p>
+                <p>{{user_profile.phone}}</p>
+                <p>{{user_profile.bio}}</p>
+                <a class="btn btn-primary" href="{% url 'edit_profile' %}">Edit Profile</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
 
-
-
-        <a href="{% url 'edit_profile' %}">Edit Profile</a>
     </div>
 </div>
 {% endblock %}
