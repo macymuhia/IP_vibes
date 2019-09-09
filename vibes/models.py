@@ -45,3 +45,7 @@ class Project(models.Model):
         max_digits=3, decimal_places=1, default=0, blank=True)
     content_rating = models.DecimalField(
         max_digits=3, decimal_places=1, default=0, blank=True)
+
+    @classmethod
+    def fetch_project(cls, project_id):
+        return cls.objects.filter(project_owner__id=project_id)

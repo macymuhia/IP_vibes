@@ -11,7 +11,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import inlineformset_factory
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
 from .forms import SignUpForm, UserForm, ProjectForm
 from .models import UserProfile, Project
 from .tokens import account_activation_token
@@ -22,6 +22,14 @@ from .tokens import account_activation_token
 def home(request):
     projects = Project.objects.all()
     return render(request, 'home.html', {'projects': projects})
+
+
+def project(request, project_id):
+    try:
+        project = Project().fetch_project(project_id)
+    except ObjectDoesNotExist:
+        raise Http404()
+    return render(request, 'project.html', {'project': project})
 
 
 @login_required(login_url='login/')
