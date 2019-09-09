@@ -21,6 +21,15 @@ body {
     border: none;
 }
 
+.btn-primary:hover {
+    background-color: #15ac9a;
+    border: none;
+}
+
+a:hover {
+    font-style: oblique;
+}
+
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav>li>a,
 .btn-primary {

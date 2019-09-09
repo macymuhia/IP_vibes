@@ -1,13 +1,31 @@
-{%extends 'base.html'%}
+{%extends 'base.html'%} {% load bootstrap3 %} {% load i18n widget_tweaks %}
 <!-- content -->
 {% block content %} {{block.super}}
 <div class="card text-center">
-    <h1>User profile</h1>
     <h2>Update your information</h2>
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} {{ noodle_form.as_p }} {{ formset.management_form }} {{ formset.as_p }}
+            {% csrf_token %}
+            <div class="form-group">
+                {% render_field noodle_form.email class="form-control" placeholder='email' %}
+                <p style="color: red">{{noodle_form.email.errors}}</p>
+            </div>
+            <!-- <div class="form-group">
+                {% render_field formset.field.photo class="form-control" placeholder='photo' %}
+                <p style="color: red">{{formset.photo.errors}}</p>
+            </div>
+            <div class="form-group">
+                {% render_field formset.phone class="form-control" placeholder='phone' %}
+                <p style="color: red">{{formset.phone.errors}}</p>
+            </div>
+            <div class="form-group">
+                {% render_field formset.bio class="form-control" placeholder='bio' %}
+                <p style="color: red">{{formset.bio.errors}}</p>
+            </div> -->
+
+            <!-- {{ noodle_form.as_p }} -->
+            {% bootstrap_formset formset %}
             <button type="submit" class="btn btn-primary">done</button>
 
         </form>
