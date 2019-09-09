@@ -37,5 +37,9 @@ a:hover {
 }
 
 .col-md-4 {
-    float: left;
+    margin-bottom: 10px;
+}
+
+.title {
+    color: #15ac9a;
 }

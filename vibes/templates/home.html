@@ -2,17 +2,17 @@
 <!-- content -->
 {% block content %} {{block.super}}
 <div class="card text-center">
-    <div class="card-img-overlay">
-        <h1 class="card-title text-center">IP_vibes</h1>
-        <p class="card-text">IP ratings...</p>
-    </div>
     <div class="row">
         {% for project in projects %}
         <div class="col-md-4">
             <!-- <a href="{% url 'project' project_id=project.project_owner_id %}"> -->
             <img class="img-responsive img-rounded" src="{{ project.image.url }}" alt="">
             <!-- </a> -->
-            <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+            <a class="title" href="{{ project.link }}" target="_blank">
+                <h4>
+                    {{ project.title }}
+                </h4>
+            </a>
             <p>{{ project.description | truncatechars:80 }}</p>
         </div>
         {% endfor %}
