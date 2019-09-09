@@ -31,3 +31,17 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     instance.profile.save()
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='projects/')
+    description = models.CharField(max_length=255)
+    link = models.URLField(default='')
+    project_owner = models.ForeignKey(UserProfile, on_delete=models.DO_NOTHING)
+    design_rating = models.DecimalField(
+        max_digits=3, decimal_places=1, blank=True)
+    usability_rating = models.DecimalField(
+        max_digits=3, decimal_places=1, blank=True)
+    content_rating = models.DecimalField(
+        max_digits=3, decimal_places=1, blank=True)
