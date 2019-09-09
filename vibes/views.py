@@ -12,7 +12,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
-from .forms import SignUpForm, UserForm
+from .forms import SignUpForm, UserForm, ProjectForm
 from .models import UserProfile
 from .tokens import account_activation_token
 
@@ -21,6 +21,11 @@ from .tokens import account_activation_token
 
 def home(request):
     return render(request, 'home.html')
+
+
+def new_project(request):
+    form = ProjectForm(request.POST)
+    return render(request, 'new_project.html', {'form': form})
 
 
 def signup(request):
