@@ -7,12 +7,13 @@
         <p class="card-text">IP ratings...</p>
     </div>
     <div class="row">
-        <div class="col-md-4"></div>
         {% for project in projects %}
         <div class="col-md-4">
-            <a href="{% url 'project' project_id=project.project_owner_id %}"><img class="img-responsive img-rounded" src="{{ project.image.url }}" alt=""></a>
-            <a href="{{ project.link }}">{{ project.title }}</a>
-            <p>{{ project.description }}</p>
+            <!-- <a href="{% url 'project' project_id=project.project_owner_id %}"> -->
+            <img class="img-responsive img-rounded" src="{{ project.image.url }}" alt="">
+            <!-- </a> -->
+            <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+            <p>{{ project.description | truncatechars:80 }}</p>
         </div>
         {% endfor %}
     </div>

@@ -35,3 +35,7 @@ a:hover {
 .btn-primary {
     color: whitesmoke;
 }
+
+.col-md-4 {
+    float: left;
+}
