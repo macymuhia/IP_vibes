@@ -12,9 +12,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'new_project' %}"><span class="glyphicon glyphicon-plus"></span> Submit Project</a></li>
                 <li><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span> Hi {{user.username}} </a></li>
                 <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
                 {% else %}
+                <li><a href="{% url 'new_project' %}"><span class="glyphicon glyphicon-plus"></span> Submit Project</a></li>
                 <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 {% endif %}
