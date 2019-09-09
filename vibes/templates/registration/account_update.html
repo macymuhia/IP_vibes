@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-content">
                     <h2 class="flow-text">Update your information</h2>
-                    <form action="." method="POST" class="padding">
+                    <form action="." method="POST" class="padding" enctype="multipart/form-data">
                         {% csrf_token %} {{ noodle_form.as_p }}
                         <div class="divider"></div>
                         {{ formset.management_form }} {{ formset.as_p }}
