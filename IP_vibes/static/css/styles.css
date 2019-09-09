@@ -1,0 +1,45 @@
+/* * {
+    border: 1px red solid;
+} */
+
+body {
+    background-color: whitesmoke;
+}
+
+.col-md-4 img {
+    width: 350px;
+}
+
+.navbar {
+    background-color: #48c5b6;
+    border-radius: 0px;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #48c5b6;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #15ac9a;
+    border: none;
+}
+
+a:hover {
+    font-style: oblique;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a,
+.btn-primary {
+    color: whitesmoke;
+}
+
+.col-md-4 {
+    margin-bottom: 10px;
+}
+
+.title {
+    color: #15ac9a;
+}
